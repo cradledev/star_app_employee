@@ -1,0 +1,20 @@
+enum NavigationItem {
+  header,
+  addnewquiz,
+  modifyexistingquiz,
+  revenuereport,
+  usagedata,
+  bandwidthconsumptiondata,
+  customersupportchat,
+  technicalsupportchat,
+  theme,
+  rateus,
+  share,
+  instagram,
+  community,
+  emailus,
+  ourotherapps,
+  troubleshoot,
+  attribution,
+  privacypolicy
+}
