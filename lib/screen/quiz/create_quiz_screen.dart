@@ -39,7 +39,7 @@ class _CreateQuizScreen extends State<CreateQuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: "Create Quiz"),
+      appBar: const CustomAppBar(title: Text("Create Quiz")),
       drawer: const CustomDrawerWidget(),
       body: Padding(
         padding:

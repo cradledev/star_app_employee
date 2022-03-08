@@ -3,9 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'package:starappemployee/constant/constant.dart';
-import 'package:starappemployee/screen/signup_screen.dart';
+import 'package:starappemployee/screen/dailyprogram/dailyprogramdetail_screen.dart';
+import 'package:starappemployee/screen/dailyprogram/dailyprogramreminder_screen.dart';
+import 'package:starappemployee/screen/dailyprogram/dailyprogramplay_screen.dart';
+import 'package:starappemployee/screen/dailyprogram/dailywisdom_screen.dart';
+import 'package:starappemployee/screen/signup/signup_screen.dart';
+import 'package:starappemployee/screen/signup/accesscode_screen.dart';
+import 'package:starappemployee/screen/signup/validation_success_screen.dart';
 import 'package:starappemployee/screen/splash_screen.dart';
 import 'package:starappemployee/screen/home_screen.dart';
+import 'package:starappemployee/screen/dailyprogram/dailyprogram_scren.dart';
 import 'package:starappemployee/screen/dashboard_screen.dart';
 import 'package:starappemployee/screen/quiz/create_quiz_screen.dart';
 import 'package:starappemployee/screen/quiz/transformation_screen.dart';
@@ -57,7 +64,19 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: <String, WidgetBuilder>{
         HOME_SCREEN: (BuildContext context) => const HomeScreen(),
+        ACCESSCODE_SCREEN: (BuildContext context) => const AccessCodeScreen(),
         SIGNUP_SCREEN: (BuildContext context) => const SignupScreen(),
+        VALIDATIONSUCCESS_SCREEN: (BuildContext context) =>
+            const ValidationSuccessScreen(),
+        DAILYPROGRAM_SCREEN: (BuildContext context) =>
+            const DailyProgramScreen(),
+        DAILYPROGRAMDETAIL_SCREEN: (BuildContext context) =>
+            const DailyProgramDetailScreen(),
+        DIALYWISDOM_SCREEN: (BuildContext context) => const DailyWisdomScreen(),
+        DAILYPROGRAMPLAY_SCREEN: (BuildContext context) =>
+            const DailyProgramPlayScreen(),
+        DAILYPROGRAMREMINDER_SCREEN: (BuildContext context) =>
+            const DailyProgramReminderScreen(),
         DASHBORAD_SCREEN: (BuildContext context) => const DashboardScreen(),
         CREATE_QUIZ_SCREEN: (BuildContext context) => const CreateQuizScreen(),
         TRANSFORMATION: (BuildContext context) => const TranformationScreen(),

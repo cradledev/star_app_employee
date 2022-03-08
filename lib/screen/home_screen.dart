@@ -13,8 +13,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  void onContinueWithEmail() {
-    Navigator.of(context).pushReplacementNamed(SIGNUP_SCREEN);
+  void onAccessCodeLogin() {
+    Navigator.of(context).pushNamed(ACCESSCODE_SCREEN);
+  }
+
+  void onCorporateCodeLogin() {
+    Navigator.of(context).pushNamed(SIGNUP_SCREEN);
   }
 
   @override
@@ -45,10 +49,20 @@ class HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   const SizedBox(height: 200),
+                  const Text(
+                    'Welcome to Star App',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Image.asset(
                     'assets/images/logo.png',
-                    width: 40,
-                    height: 60,
+                    fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 10),
                   const Text(
@@ -64,9 +78,25 @@ class HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         ElevatedButtonCustom(
-                          onTap: onContinueWithEmail,
-                          text: "Continue With Email",
+                          onTap: onAccessCodeLogin,
+                          text: "Access Code Login",
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        OutlineButtonCustom(
+                          onTap: onCorporateCodeLogin,
+                          text: "Corporate Code Login",
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const Center(
+                          child: Text(
+                            "Apply for Login Code",
+                            style: TextStyle(color: appMainColor),
+                          ),
+                        )
                       ],
                     ),
                   ),

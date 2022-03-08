@@ -52,7 +52,7 @@ class _DashboardScreen extends State<DashboardScreen>
       // ignore: missing_return
       onWillPop: () {},
       child: Scaffold(
-        appBar: const CustomAppBar(title: "Dashboard"),
+        appBar: const CustomAppBar(title: Text("Dashboard")),
         drawer: const CustomDrawerWidget(),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(10, 15, 10, 10),

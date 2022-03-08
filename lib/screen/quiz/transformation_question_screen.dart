@@ -48,7 +48,7 @@ class _TransformationQuestionScreen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: "Transformation"),
+      appBar: const CustomAppBar(title: Text("Transformation")),
       drawer: const CustomDrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(25, 25, 25, 50),

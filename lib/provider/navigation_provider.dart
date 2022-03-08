@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:starappemployee/model/navigation_item.dart';
 
 class NavigationProvider extends ChangeNotifier {
-  NavigationItem _navigationItem = NavigationItem.addnewquiz;
+  NavigationItem _navigationItem = NavigationItem.dailyprogram;
 
   NavigationItem get navigationItem => _navigationItem;
 

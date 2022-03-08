@@ -40,14 +40,17 @@ class CustomFormField extends StatelessWidget {
           ),
           child: Text(
             headingText,
-            style: Theme.of(context).textTheme.headline6,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
           ),
         ),
+        // const SizedBox(
+        //   height: 8,
+        // ),
         Container(
           margin: const EdgeInsets.only(left: 0, right: 0),
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(25),
               boxShadow: const [
                 BoxShadow(
                   color: Colors.black12,
@@ -57,7 +60,7 @@ class CustomFormField extends StatelessWidget {
               ]),
           child: Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 3.0),
+                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 0.0),
             child: TextField(
               textAlignVertical: TextAlignVertical.center,
               maxLines: maxLines,
@@ -67,7 +70,8 @@ class CustomFormField extends StatelessWidget {
               obscureText: obsecureText,
               decoration: InputDecoration(
                 hintText: hintText,
-                hintStyle: Theme.of(context).textTheme.subtitle1,
+                hintStyle: const TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.normal),
                 border: InputBorder.none,
                 suffixIcon: suffixIcon,
               ),
@@ -79,26 +83,96 @@ class CustomFormField extends StatelessWidget {
   }
 }
 
+class CustomButtionSimilarToField extends StatelessWidget {
+  final String headingText;
+  final String buttonText;
+  final Widget suffixIcon;
+  final Function() onTap;
+
+  const CustomButtionSimilarToField({
+    Key key,
+    this.headingText,
+    this.buttonText,
+    this.suffixIcon,
+    this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(
+            left: 0,
+            right: 0,
+            bottom: 5,
+          ),
+          child: Text(
+            headingText,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+          ),
+        ),
+        // const SizedBox(
+        //   height: 8,
+        // ),
+        InkWell(
+          onTap: onTap,
+          child: Container(
+            margin: const EdgeInsets.only(left: 0, right: 0),
+            width: 250,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(25),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 25,
+                    offset: Offset(0, 8),
+                  ),
+                ]),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 50, vertical: 14.0),
+              child: Text(buttonText),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
-  final String title;
+  final Widget title;
 
   const CustomAppBar({Key key, this.title})
-      : preferredSize = const Size.fromHeight(120.0),
+      : preferredSize = const Size.fromHeight(120),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
+      automaticallyImplyLeading: false,
       elevation: 0.0,
-      toolbarHeight: 100,
+      toolbarHeight: 120,
       title: Container(
-        padding: const EdgeInsets.only(top: 60),
-        child: Text(
-          title,
-          style: const TextStyle(color: Colors.white),
+        padding: const EdgeInsets.only(top: 50),
+        child: title,
+      ),
+      leading: Transform.translate(
+        offset: const Offset(0, -20),
+        child: IconButton(
+          icon: const Icon(
+            Icons.menu,
+            size: 30,
+          ),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
       ),
       centerTitle: true,
@@ -115,7 +189,59 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           //     end: Alignment.topCenter),
         ),
       ),
-      systemOverlayStyle: SystemUiOverlayStyle.dark,
+      systemOverlayStyle: SystemUiOverlayStyle.light,
+    );
+  }
+}
+
+class CustomHeightAppBar extends StatelessWidget with PreferredSizeWidget {
+  @override
+  final Size preferredSize;
+  final Widget title;
+  final BuildContext context;
+  const CustomHeightAppBar({Key key, this.title, this.context})
+      : preferredSize = const Size.fromHeight(230),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      // primary: false,
+      automaticallyImplyLeading: false,
+      elevation: 0.0,
+      toolbarHeight: 230,
+      title: Container(
+        padding: const EdgeInsets.only(top: 50),
+        child: title,
+      ),
+      leading: Transform.translate(
+        offset: const Offset(0, -80),
+        child: IconButton(
+          icon: const Icon(
+            Icons.menu,
+            size: 30,
+          ),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+        ),
+      ),
+      centerTitle: true,
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          color: appMainColor,
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          ),
+          // gradient: LinearGradient(
+          //     colors: [Colors.red, Colors.pink],
+          //     begin: Alignment.bottomCenter,
+          //     end: Alignment.topCenter),
+        ),
+      ),
+      systemOverlayStyle: SystemUiOverlayStyle.light,
     );
   }
 }
@@ -133,7 +259,7 @@ class ElevatedButtonCustom extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 200,
-        height: 40,
+        height: 50,
         decoration: const BoxDecoration(
           color: Color(0xff0A103F),
         ),
@@ -141,7 +267,7 @@ class ElevatedButtonCustom extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
-              fontSize: 14.0,
+              fontSize: 16.0,
               fontWeight: FontWeight.normal,
               color: Colors.white,
             ),
@@ -165,7 +291,7 @@ class ElevatedSmallButtonCustom extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 150,
-        height: 40,
+        height: 50,
         decoration: const BoxDecoration(
           color: Color(0xff0A103F),
         ),
@@ -173,7 +299,7 @@ class ElevatedSmallButtonCustom extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
-              fontSize: 14.0,
+              fontSize: 16.0,
               fontWeight: FontWeight.normal,
               color: Colors.white,
             ),
@@ -196,7 +322,7 @@ class OutlineButtonCustom extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 200,
-        height: 40,
+        height: 50,
         decoration: BoxDecoration(
           color: Colors.white,
           // borderRadius: const BorderRadius.all(
@@ -211,7 +337,7 @@ class OutlineButtonCustom extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
-              fontSize: 14.0,
+              fontSize: 16.0,
               fontWeight: FontWeight.normal,
               color: Color(0xff0A103F),
             ),
@@ -235,7 +361,7 @@ class OutlineSmallButtonCustom extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 150,
-        height: 40,
+        height: 50,
         decoration: BoxDecoration(
           color: Colors.white,
           // borderRadius: const BorderRadius.all(
@@ -250,7 +376,7 @@ class OutlineSmallButtonCustom extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
-              fontSize: 14.0,
+              fontSize: 16.0,
               fontWeight: FontWeight.normal,
               color: Color(0xff0A103F),
             ),

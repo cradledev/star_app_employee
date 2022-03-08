@@ -29,40 +29,62 @@ class CustomDrawerWidget extends StatelessWidget {
                 padding: padding,
                 child: Column(
                   children: [
-                    buildMenuItem(
-                      context,
-                      item: NavigationItem.addnewquiz,
-                      text: 'Add New Quiz',
+                    const ListTile(
+                      contentPadding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                      title: Text("Reminder",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          )),
                     ),
-                    buildMenuItem(context,
-                        item: NavigationItem.modifyexistingquiz,
-                        text: 'Modifying existing quiz'),
-                    buildMenuItem(
-                      context,
-                      item: NavigationItem.revenuereport,
-                      text: 'Revenue report',
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 5, 0),
+                      child: Column(
+                        children: [
+                          buildMenuItem(
+                            context,
+                            item: NavigationItem.dailyprogram,
+                            text: 'Daily Program',
+                          ),
+                          buildMenuItem(context,
+                              item: NavigationItem.bonustarquiz,
+                              text: 'Bonus Star Quiz'),
+                          buildMenuItem(
+                            context,
+                            item: NavigationItem.leaderboard,
+                            text: 'Leader Board',
+                          ),
+                          buildMenuItem(
+                            context,
+                            item: NavigationItem.healthscreening,
+                            text: 'Health Screening',
+                          ),
+                          buildMenuItem(
+                            context,
+                            item: NavigationItem.update,
+                            text: 'Update',
+                            icon: Icons.account_tree_outlined,
+                          ),
+                          buildMenuItem(
+                            context,
+                            item: NavigationItem.profileoverview,
+                            text: 'Profile Overview',
+                          ),
+                          buildMenuItem(
+                            context,
+                            item: NavigationItem.message,
+                            text: 'Message',
+                          ),
+                          buildMenuItem(
+                            context,
+                            item: NavigationItem.activity,
+                            text: 'Activity',
+                          ),
+                        ],
+                      ),
                     ),
-                    buildMenuItem(
-                      context,
-                      item: NavigationItem.usagedata,
-                      text: 'Usage Data',
-                    ),
-                    buildMenuItem(
-                      context,
-                      item: NavigationItem.bandwidthconsumptiondata,
-                      text: 'Bandwidth Consumption Data',
-                      icon: Icons.account_tree_outlined,
-                    ),
-                    buildMenuItem(
-                      context,
-                      item: NavigationItem.customersupportchat,
-                      text: 'Customer Support Chat',
-                    ),
-                    buildMenuItem(
-                      context,
-                      item: NavigationItem.technicalsupportchat,
-                      text: 'Technical Support Chat',
-                    ),
+
                     // const Divider(color: Colors.white70),
                     const ListTile(
                       contentPadding: EdgeInsets.fromLTRB(5, 0, 0, 0),
@@ -248,10 +270,10 @@ class CustomDrawerWidget extends StatelessWidget {
 
   void onGoPage(BuildContext context, NavigationItem item) {
     switch (item) {
-      case NavigationItem.addnewquiz:
-        Navigator.of(context).pushNamed(CREATE_QUIZ_SCREEN);
+      case NavigationItem.dailyprogram:
+        Navigator.of(context).pushNamed(DAILYPROGRAM_SCREEN);
         break;
-      case NavigationItem.modifyexistingquiz:
+      case NavigationItem.leaderboard:
         print("modifying existing quiz");
         break;
       default:
